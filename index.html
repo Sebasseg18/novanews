@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio | NovaNews</title>
+  <meta name="description" content="NovaNews: noticias de educación, tecnología, turismo y comercio.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="saltar-contenido" href="#principal">Saltar al contenido</a>
+  <header id="header"></header>
+
+  <main id="principal">
+
+    <!-- Bienvenida -->
+    <section class="hero">
+      <div class="contenedor hero__interno">
+        <div>
+          <h1>Mantente informado, <em>a un clic de distancia</em></h1>
+          <p>Noticias educativas, tecnológicas, turísticas y comerciales en un solo lugar, siempre actualizadas.</p>
+          <div class="hero__acciones">
+            <a class="btn btn-primario" href="noticias.html">Explorar noticias</a>
+            <a class="btn btn-contorno" href="contacto.html">Contáctanos</a>
+          </div>
+        </div>
+        <div class="hero__imagen">
+          <img src="img/hero.svg" alt="Ilustración de portada de NovaNews">
+        </div>
+      </div>
+    </section>
+
+    <!-- Noticias destacadas (se llenan desde js/home.js) -->
+    <section class="seccion">
+      <div class="contenedor">
+        <h2 class="seccion__titulo">Noticias destacadas</h2>
+        <p class="seccion__sub">Lo más relevante de la semana, seleccionado para ti.</p>
+        <div class="grid-noticias" id="destacadas" aria-live="polite">
+          <p>Cargando noticias…</p>
+        </div>
+
+        <!-- Testimonio -->
+        <figure class="testimonio">
+          <blockquote>“NovaNews se ha convertido en mi fuente diaria de información. El diseño es claro y encuentro todo lo que necesito rápido.”</blockquote>
+          <figcaption><cite>Laura Méndez, lectora frecuente</cite></figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

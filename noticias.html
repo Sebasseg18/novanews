@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noticias | NovaNews</title>
+  <meta name="description" content="Listado de noticias con filtros por categoría y buscador.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="saltar-contenido" href="#principal">Saltar al contenido</a>
+  <header id="header"></header>
+
+  <main id="principal">
+
+    <section class="seccion">
+      <div class="contenedor">
+        <h1 class="seccion__titulo">Noticias</h1>
+        <p class="seccion__sub">Explora todas las publicaciones disponibles.</p>
+
+        <div class="barra-filtros">
+          <div class="filtros" id="filtros" role="group" aria-label="Filtrar por categoría"></div>
+          <div>
+            <label class="solo-lectores" for="buscador">Buscar noticia</label>
+            <input class="campo-buscar" type="search" id="buscador" placeholder="Buscar noticia…" autocomplete="off">
+          </div>
+        </div>
+
+        <p class="seccion__sub" id="contador" aria-live="polite"></p>
+        <div class="grid-noticias" id="listado"></div>
+        <nav class="paginacion" id="paginacion" aria-label="Paginación"></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/noticias.js"></script>
+</body>
+</html>

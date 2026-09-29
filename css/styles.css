@@ -1,0 +1,318 @@
+/* =========================================================
+   NovaNews - Hoja de estilos global
+   Sigue la línea visual de los mockups de la Entrega 1:
+   azul oscuro + rojo de acento, tarjetas y menú de 5 secciones.
+   ========================================================= */
+
+/* ---------- 1. Variables (design tokens) ---------- */
+:root {
+  --azul-900: #131f3a;      /* header / footer */
+  --azul-700: #1f3255;      /* hero */
+  --rojo: #e63946;          /* acento principal */
+  --rojo-oscuro: #c92f3b;
+  --fondo: #f5f6f8;
+  --superficie: #ffffff;
+  --texto: #1f2430;
+  --texto-suave: #5d6675;
+  --borde: #dfe3ea;
+  --exito: #2f8f5b;
+  --exito-fondo: #e1f2e7;
+
+  /* Colores por categoría (mismos de los mockups) */
+  --cat-educacion: #e9a300;
+  --cat-tecnologia: #131f3a;
+  --cat-turismo: #2f8f5b;
+  --cat-comercial: #6b7280;
+
+  --radio: 10px;
+  --ancho-max: 1080px;
+  --fuente: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- 2. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  color: var(--texto);
+  background: var(--fondo);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .4rem; }
+
+:focus-visible {
+  outline: 3px solid var(--rojo);
+  outline-offset: 2px;
+}
+
+.contenedor {
+  width: min(100% - 2rem, var(--ancho-max));
+  margin-inline: auto;
+}
+
+.solo-lectores {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.saltar-contenido {
+  position: absolute; left: -999px; top: 0;
+  background: var(--rojo); color: #fff; padding: .5rem 1rem; z-index: 100;
+}
+.saltar-contenido:focus { left: 0; }
+
+/* ---------- 3. Botones ---------- */
+.btn {
+  display: inline-block;
+  font: inherit; font-weight: 600; font-size: .9rem;
+  padding: .55rem 1.1rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.btn-primario { background: var(--rojo); color: #fff; }
+.btn-primario:hover { background: var(--rojo-oscuro); }
+.btn-contorno { background: transparent; color: #fff; border-color: #fff; }
+.btn-contorno:hover { background: rgba(255,255,255,.12); }
+.btn-secundario { background: var(--superficie); color: var(--texto); border-color: var(--borde); }
+.btn-secundario:hover { border-color: var(--texto-suave); }
+.btn-peligro { background: transparent; color: var(--rojo-oscuro); border-color: var(--rojo); padding: .3rem .8rem; }
+.btn-peligro:hover { background: var(--rojo); color: #fff; }
+.btn-pequeno { padding: .35rem .8rem; font-size: .8rem; }
+
+/* ---------- 4. Header y navegación ---------- */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--azul-900);
+  color: #fff;
+}
+.header__interno {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 60px; gap: 1rem;
+}
+.logo { font-size: 1.35rem; font-weight: 700; text-decoration: none; letter-spacing: .2px; }
+.logo span { color: var(--rojo); }
+
+.menu { display: flex; align-items: center; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+.menu a {
+  text-decoration: none; font-size: .9rem; color: #cfd6e6;
+  padding: .4rem 0; border-bottom: 2px solid transparent;
+}
+.menu a:hover { color: #fff; }
+.menu a[aria-current="page"] { color: var(--rojo); border-bottom-color: var(--rojo); font-weight: 600; }
+.menu__buscar { display: inline-flex; }
+.menu__buscar svg { width: 18px; height: 18px; }
+
+.menu-toggle {
+  display: none; background: none; border: 0; color: #fff;
+  font-size: 1.6rem; cursor: pointer; padding: .2rem .5rem;
+}
+
+/* ---------- 5. Hero (inicio) ---------- */
+.hero { background: var(--azul-700); color: #fff; padding: 3rem 0; }
+.hero__interno {
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.5rem; align-items: center;
+}
+.hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.hero h1 em { color: var(--rojo); font-style: normal; display: block; }
+.hero p { color: #c9d2e6; max-width: 46ch; margin: 1rem 0 1.5rem; }
+.hero__acciones { display: flex; gap: .8rem; flex-wrap: wrap; }
+.hero__imagen { border-radius: var(--radio); overflow: hidden; }
+
+/* ---------- 6. Secciones ---------- */
+.seccion { padding: 2.2rem 0; }
+.seccion__titulo { font-size: 1.3rem; }
+.seccion__sub { color: var(--texto-suave); margin: 0 0 1.4rem; font-size: .95rem; }
+
+/* ---------- 7. Grid y tarjetas de noticias ---------- */
+.grid-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.tarjeta__imagen { position: relative; }
+.tarjeta__imagen img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.tarjeta__cuerpo { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
+.tarjeta__titulo { font-size: 1rem; margin-bottom: .35rem; }
+.tarjeta__texto { color: var(--texto-suave); font-size: .88rem; margin: 0 0 1rem; }
+.tarjeta__meta { color: var(--texto-suave); font-size: .78rem; margin: 0 0 .8rem; }
+.tarjeta__pie { margin-top: auto; text-align: right; }
+
+.tarjeta__quitar {
+  position: absolute; top: .6rem; right: .6rem;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 0; background: var(--rojo); color: #fff;
+  font-weight: 700; cursor: pointer; line-height: 1;
+  z-index: 2; /* por encima de la imagen de la tarjeta */
+}
+.tarjeta__quitar:hover { background: var(--rojo-oscuro); }
+
+/* Etiqueta de categoría */
+.etiqueta {
+  display: inline-block;
+  font-size: .68rem; font-weight: 700; color: #fff;
+  padding: .15rem .6rem; border-radius: 999px;
+  background: var(--cat-comercial);
+}
+.tarjeta__imagen .etiqueta { position: absolute; left: .6rem; bottom: .6rem; }
+.etiqueta--educacion  { background: var(--cat-educacion); }
+.etiqueta--tecnologia { background: var(--cat-tecnologia); }
+.etiqueta--turismo    { background: var(--cat-turismo); }
+.etiqueta--comercial  { background: var(--cat-comercial); }
+
+/* ---------- 8. Testimonio ---------- */
+.testimonio {
+  background: var(--superficie); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1.4rem 1.6rem; margin: 2rem 0 0;
+}
+.testimonio blockquote { margin: 0 0 .5rem; font-size: 1rem; }
+.testimonio cite { font-size: .85rem; color: var(--texto-suave); font-weight: 600; font-style: normal; }
+
+/* ---------- 9. Filtros, buscador y paginación ---------- */
+.barra-filtros {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem;
+}
+.filtros { display: flex; gap: .5rem; flex-wrap: wrap; }
+.filtro {
+  font: inherit; font-size: .8rem; font-weight: 700; color: #fff;
+  border: 2px solid transparent; border-radius: 999px;
+  padding: .3rem .9rem; cursor: pointer;
+  opacity: .6;
+}
+.filtro[aria-pressed="true"] { opacity: 1; box-shadow: 0 0 0 2px var(--fondo), 0 0 0 4px currentColor; }
+.filtro--todas { background: var(--rojo); }
+.filtro--educacion { background: var(--cat-educacion); }
+.filtro--tecnologia { background: var(--cat-tecnologia); }
+.filtro--turismo { background: var(--cat-turismo); }
+.filtro--comercial { background: var(--cat-comercial); }
+
+.campo-buscar {
+  font: inherit; font-size: .9rem; padding: .5rem .8rem;
+  border: 1px solid var(--borde); border-radius: 8px;
+  min-width: min(100%, 240px); background: #fff;
+}
+
+.paginacion { display: flex; justify-content: center; gap: .4rem; margin-top: 2rem; }
+.paginacion button {
+  font: inherit; font-size: .85rem; min-width: 36px; height: 36px;
+  border: 1px solid var(--borde); background: #fff; border-radius: 8px; cursor: pointer;
+}
+.paginacion button[aria-current="page"] { background: var(--rojo); border-color: var(--rojo); color: #fff; font-weight: 700; }
+.paginacion button:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ---------- 10. Estados vacíos y mensajes ---------- */
+.estado-vacio {
+  background: var(--superficie); border: 1px dashed var(--borde);
+  border-radius: var(--radio); padding: 2rem; text-align: center; color: var(--texto-suave);
+}
+.estado-vacio strong { display: block; color: var(--texto); margin-bottom: .3rem; }
+
+.alerta {
+  padding: .8rem 1rem; border-radius: 8px; font-size: .9rem; font-weight: 600; margin-bottom: 1rem;
+}
+.alerta--exito { background: var(--exito-fondo); color: var(--exito); border: 1px solid var(--exito); }
+
+/* ---------- 11. Detalle de noticia ---------- */
+.migas { font-size: .8rem; color: var(--texto-suave); padding: 1rem 0 .6rem; }
+.migas a { text-decoration: none; }
+.migas a:hover { text-decoration: underline; }
+
+.detalle__imagen { position: relative; border-radius: var(--radio); overflow: hidden; }
+.detalle__imagen img { width: 100%; max-height: 360px; object-fit: cover; }
+.detalle__imagen .etiqueta { position: absolute; top: .8rem; left: .8rem; }
+.detalle h1 { font-size: 1.8rem; margin-top: 1.2rem; }
+.detalle__meta { color: var(--texto-suave); font-size: .85rem; margin-bottom: 1rem; }
+.detalle__texto { max-width: 68ch; }
+.detalle__acciones { display: flex; gap: .7rem; margin: 1.5rem 0 2rem; flex-wrap: wrap; }
+
+/* ---------- 12. Contacto ---------- */
+.contacto-grid { display: grid; grid-template-columns: 1fr 1.8fr; gap: 1.4rem; align-items: start; }
+.panel {
+  background: var(--superficie); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1.4rem;
+}
+.panel h2 { font-size: 1.05rem; margin-bottom: 1rem; }
+.dato { margin-bottom: 1rem; font-size: .9rem; }
+.dato strong { display: block; color: var(--rojo); font-size: .82rem; }
+
+.formulario { display: grid; gap: 1rem; }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.campo label { display: block; font-size: .8rem; font-weight: 600; color: var(--texto-suave); margin-bottom: .25rem; }
+.campo input[type="text"], .campo input[type="email"], .campo select, .campo textarea {
+  width: 100%; font: inherit; font-size: .9rem; padding: .6rem .7rem;
+  border: 1.5px solid var(--borde); border-radius: 8px; background: #fff;
+}
+.campo textarea { min-height: 130px; resize: vertical; }
+.campo.campo--error input, .campo.campo--error textarea, .campo.campo--error select { border-color: var(--rojo); }
+.campo.campo--valido input, .campo.campo--valido textarea, .campo.campo--valido select { border-color: var(--exito); }
+.campo__error { display: block; color: var(--rojo-oscuro); font-size: .75rem; line-height: 1.2; min-height: 1.2em; margin-top: .2rem; } /* alto reservado: el botón no se desplaza al aparecer un error */
+.campo--check { display: flex; align-items: flex-start; gap: .5rem; font-size: .85rem; }
+.campo--check input { margin-top: .25rem; }
+
+/* ---------- 13. Administración (mini CRUD) ---------- */
+.admin-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 1.4rem; align-items: start; }
+.tabla-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--borde); }
+th { color: var(--texto-suave); font-size: .78rem; }
+.acciones-tabla { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+/* ---------- 14. Nosotros ---------- */
+.nosotros p { max-width: 68ch; }
+.valores { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+
+/* ---------- 15. Footer ---------- */
+.footer { background: var(--azul-900); color: #b8c2d9; margin-top: 3rem; font-size: .85rem; }
+.footer__grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1.5rem; padding: 2rem 0 1.5rem;
+}
+.footer h3 { color: var(--rojo); font-size: .85rem; margin-bottom: .6rem; }
+.footer ul { list-style: none; margin: 0; padding: 0; }
+.footer li { margin-bottom: .3rem; }
+.footer a { text-decoration: none; }
+.footer a:hover { color: #fff; text-decoration: underline; }
+.footer__copy { border-top: 1px solid rgba(255,255,255,.1); text-align: center; padding: 1rem 0; font-size: .78rem; }
+
+/* ---------- 16. Responsive ---------- */
+@media (max-width: 800px) {
+  .hero__interno, .contacto-grid, .admin-grid { grid-template-columns: 1fr; }
+  .fila { grid-template-columns: 1fr; }
+  .menu-toggle { display: block; }
+  .menu {
+    display: none; position: absolute; top: 60px; left: 0; right: 0;
+    background: var(--azul-900); flex-direction: column; align-items: flex-start;
+    padding: 1rem; gap: .8rem;
+  }
+  .menu.abierto { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

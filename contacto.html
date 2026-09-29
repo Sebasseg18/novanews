@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto | NovaNews</title>
+  <meta name="description" content="Escríbenos: formulario de contacto de NovaNews.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="saltar-contenido" href="#principal">Saltar al contenido</a>
+  <header id="header"></header>
+
+  <main id="principal">
+
+    <section class="seccion">
+      <div class="contenedor">
+        <h1 class="seccion__titulo">Contáctanos</h1>
+        <p class="seccion__sub">¿Tienes una noticia o comentario? Escríbenos.</p>
+
+        <div id="confirmacion" class="alerta alerta--exito" role="status" hidden>
+          ✓ ¡Mensaje enviado con éxito! Te responderemos pronto.
+        </div>
+
+        <div class="contacto-grid">
+          <aside class="panel">
+            <h2>Información de contacto</h2>
+            <div class="dato"><strong>Dirección</strong>Calle 57 # 3-00 Este, Bogotá</div>
+            <div class="dato"><strong>Teléfono</strong>+57 601 000 0000</div>
+            <div class="dato"><strong>Correo</strong>contacto@novanews.com</div>
+            <div class="dato"><strong>Redes</strong>Facebook · Instagram · X</div>
+          </aside>
+
+          <div class="panel">
+            <h2>Formulario de contacto</h2>
+            <form id="form-contacto" class="formulario" novalidate>
+              <div class="fila">
+                <div class="campo">
+                  <label for="nombre">Nombre *</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Ej. Laura Méndez" autocomplete="name" aria-describedby="error-nombre">
+                  <span class="campo__error" id="error-nombre"></span>
+                </div>
+                <div class="campo">
+                  <label for="correo">Correo *</label>
+                  <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" autocomplete="email" aria-describedby="error-correo">
+                  <span class="campo__error" id="error-correo"></span>
+                </div>
+              </div>
+              <div class="campo">
+                <label for="asunto">Asunto</label>
+                <input type="text" id="asunto" name="asunto" placeholder="Motivo del mensaje">
+                <span class="campo__error" id="error-asunto"></span>
+              </div>
+              <div class="campo">
+                <label for="mensaje">Mensaje *</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí…" aria-describedby="error-mensaje"></textarea>
+                <span class="campo__error" id="error-mensaje"></span>
+              </div>
+              <div class="campo">
+                <div class="campo--check">
+                  <input type="checkbox" id="politica" name="politica" aria-describedby="error-politica">
+                  <label for="politica">Acepto la política de tratamiento de datos *</label>
+                </div>
+                <span class="campo__error" id="error-politica"></span>
+              </div>
+              <div><button type="submit" class="btn btn-primario">Enviar mensaje</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/contacto.js"></script>
+</body>
+</html>

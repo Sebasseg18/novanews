@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Ilustración de educación">
+  <rect width="640" height="360" fill="#e9b949"/>
+  <circle cx="470" cy="110" r="34" fill="#fff" opacity=".85"/>
+  <path d="M0 360 L200 120 L330 260 L440 170 L640 360 Z" fill="#000" opacity=".18"/>
+  <path d="M0 360 L150 220 L260 330 L360 250 L480 360 Z" fill="#fff" opacity=".22"/>
+</svg>
